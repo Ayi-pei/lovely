@@ -116,7 +116,7 @@ function ProductDetail() {
           <img
             src={product.image}
             alt={product.title}
-            className="w-full h-96 object-cover"
+            className="w-full h-auto max-h-screen object-contain"
           />
         </div>
 
