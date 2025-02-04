@@ -98,12 +98,12 @@ function Welcome() {
       {/* 主页内容 */}
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-4">
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 text-center">
-          欢迎来到"xx"
+          欢迎来到觅友
         </h1>
         <p className="text-xl text-white text-center max-w-2xl mb-8">
-          新奇美妙有趣的一次心灵之旅
+          这不是一次交易,这是真诚友善的秘密交流
         </p>
-        <button 
+        <button
           onClick={() => setIsModalOpen(true)}
           className="bg-white/90 backdrop-blur-sm text-gray-900 py-3 px-8 rounded-lg font-semibold hover:bg-white transition-colors"
         >
