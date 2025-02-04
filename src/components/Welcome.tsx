@@ -19,7 +19,6 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
-
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4 z-50">
       <div className="bg-pink-100/70 backdrop-blur-md rounded-lg max-w-md w-full p-6 relative shadow-xl">
@@ -37,23 +36,19 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 
 function Welcome() {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  // 初始仅显示欢迎页，模态框初始为关闭状态
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // 当前步骤：0-选择性别，1-选择城市，2-最后确认
+  // 当前步骤：0 - 选择性别，1 - 选择城市，2 - 最后确认
   const [currentStep, setCurrentStep] = useState(0);
-
-  // 保存用户选择的城市
+  // 保存用户选择的城市（这里未存储性别，仅用于步骤流程控制）
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
 
   /**
    * 韩国主要市级行政区划（市、广域市、特别市等）的中文名称。
-   * 此处所列数据为常用城市，包含：
-   *  - 8个首都圈及广域市（首尔、釜山、大邱、仁川、光州、大田、蔚山、世宗）
-   *  - 京畿道部分主要城市
-   *  - 江原道、忠清、全罗、庆南、庆北以及济州等地的主要市级单位
-   *
-   * 如需更全面的数据，可在此数组中进一步补充。
+   * 这里只列出部分常用城市，如需更全面的数据可自行补充。
    */
   const cities = [
     // 首都及广域市
@@ -65,9 +60,9 @@ function Welcome() {
     // 忠清北道
     "清州", "忠州", "济川",
     // 忠清南道
-    "天安", "公州", "保寧", "阿산", "西山", "论山",
+    "天安", "公州", "保寧", "阿山", "西山", "论山",
     // 전라북도（全罗北道）
-    "全州", "群山", "益山", "正邑", "南원", "金制",
+    "全州", "群山", "益山", "正邑", "南元", "金制",
     // 전라남도（全罗南道）
     "木浦", "丽水", "顺天", "罗州", "光阳",
     // 경상북도（庆尚北道）
@@ -78,7 +73,7 @@ function Welcome() {
     "济州", "西归浦"
   ];
 
-  // 循环播放背景图片
+  // 循环播放背景图片，每隔 3 秒切换一次
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
@@ -86,11 +81,18 @@ function Welcome() {
     return () => clearInterval(interval);
   }, []);
 
-  // 第一步：选择性别
-  // const handleGenderSelect = (value: string) => {
+  // 点击欢迎页“开始匹配”时打开模态框，并重置流程
+  const openModal = () => {
+    setCurrentStep(0);
+    setSelectedCity(null);
+    setIsModalOpen(true);
+  };
+
+  // 第一步：选择性别（此处仅作为流程控制，不保存具体性别）
   const handleGenderSelect = () => {
     setCurrentStep(1);
   };
+
   // 第二步：选择城市
   const handleCitySelect = (city: string) => {
     setSelectedCity(city);
@@ -102,13 +104,13 @@ function Welcome() {
     }
   };
 
-  // 第三步：最终确认，跳转到产品页面
+  // 第三步：最终确认后关闭模态框并跳转到 /h2 页面
   const handleFinalContinue = () => {
     setIsModalOpen(false);
     navigate('/products');
   };
 
-  // 根据当前步骤返回模态框内容
+  // 根据当前步骤生成模态框的内容
   const renderModalContent = () => {
     if (currentStep === 0) {
       return (
@@ -172,7 +174,7 @@ function Welcome() {
       return (
         <>
           <p className="text-gray-800 mb-6 text-lg">
-            感谢您的真诚，这次体验一定不会让您失望的~让我们开始吧
+            感谢您的真诚，相信这是一次有趣满意的体验~让我们开始吧
           </p>
           <button
             onClick={handleFinalContinue}
@@ -203,7 +205,7 @@ function Welcome() {
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
       </div>
 
-      {/* 主页内容 */}
+      {/* 欢迎页内容 */}
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-4">
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 text-center">
           欢迎来到觅友
@@ -212,14 +214,14 @@ function Welcome() {
           这不是一次交易,这是建立彼此真诚友善的秘密交流
         </p>
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={openModal}
           className="bg-white/90 backdrop-blur-sm text-gray-900 py-3 px-8 rounded-lg font-semibold hover:bg-white transition-colors"
         >
           开始匹配
         </button>
       </div>
 
-      {/* 模态框 */}
+      {/* 模态框（点击“开始匹配”后显示） */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {renderModalContent()}
       </Modal>
