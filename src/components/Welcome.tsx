@@ -52,25 +52,25 @@ function Welcome() {
    */
   const cities = [
     // 首都及广域市
-    "首尔", "釜山", "大邱", "仁川", "光州", "大田", "蔚山", "世宗",
+    "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종",
     // 京畿道（部分）
-    "水原", "高阳", "城南", "龙仁", "富川", "安山", "平泽", "果川", "安阳", "义政", "始兴", "金浦", "光明", "军浦", "吴山", "利川", "九里", "南阳州", "华城", "坡州", "阳州", "浦川", "延川",
+    "수원", "고양", "성남", "용인", "부천", "안산", "평택", "과천", "안양", "의왕", "시흥", "김포", "광명", "군포", "오산", "이천", "구리", "남양주", "화성", "파주", "양주", "포천", "연천",
     // 江原道
-    "春川", "原州", "江陵", "东海", "太白", "束草", "三陟",
+    "춘천", "원주", "강릉", "동해", "태백", "속초", "삼척",
     // 忠清北道
-    "清州", "忠州", "济川",
+    "청주", "충주", "제천",
     // 忠清南道
-    "天安", "公州", "保寧", "阿山", "西山", "论山",
+    "천안", "공주", "보령", "아산", "서산", "논산",
     // 全罗北道
-    "全州", "群山", "益山", "正邑", "南元", "金制",
+    "전주", "군산", "익산", "정읍", "남원", "김제",
     // 全罗南道
-    "木浦", "丽水", "顺天", "罗州", "光阳",
+    "목포", "여수", "순천", "羅州", "광양",
     // 庆尚北道
-    "浦项", "庆州", "九美", "永州", "安东", "文京", "尚州", "永川",
+    "포항", "경주", "구미", "영주", "안동", "문경", "상주", "영천",
     // 庆尚南道
-    "昌原", "金海", "密阳", "晋州", "巨济", "杨山", "统营",
+    "창원", "김해", "밀양", "진주", "거제", "양산", "통영",
     // 济州特别自治道
-    "济州", "西归浦"
+    "제주", "서귀포"
   ];
 
   // 循环播放背景图片，每隔 3 秒切换一次
@@ -116,20 +116,20 @@ function Welcome() {
       return (
         <>
           <p className="text-gray-800 mb-6 text-lg">
-            在开始匹配前请告诉我您的性别，这很重要
+          매칭을 시작하기 전에 성별을 알려주실 수 있으실까요? 이 부분이 정말 중요해요
           </p>
           <div className="flex justify-around">
             <button
               onClick={handleGenderSelect}
               className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
             >
-              男
+              선생님
             </button>
             <button
               onClick={handleGenderSelect}
               className="bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 rounded-lg transition-colors"
             >
-              女
+              여사님
             </button>
           </div>
         </>
@@ -138,7 +138,7 @@ function Welcome() {
       return (
         <>
           <p className="text-gray-800 mb-6 text-lg">
-            恭喜您偏好设置成功，请选择您的所在城市以便我们提供贴心的服务
+          선호 설정이 성공적으로 완료되었습니다. 더 나은 서비스를 제공해 드리기 위해, 지금 계신 도시를 선택해 주세요
           </p>
           <div className="max-h-80 overflow-y-auto mb-4">
             <div className="flex flex-wrap gap-2 justify-center">
@@ -166,7 +166,7 @@ function Welcome() {
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            确认
+            알겠습니다
           </button>
         </>
       );
@@ -174,13 +174,13 @@ function Welcome() {
       return (
         <>
           <p className="text-gray-800 mb-6 text-lg">
-            感谢您的真诚，相信这是一次有趣满意的体验~让我们开始吧
+          진심으로 감사드려요. 이번 경험이 재미있고 만족스러운 시간이 될 거라 믿어요~ 이제 시작해 볼까요?
           </p>
           <button
             onClick={handleFinalContinue}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
           >
-            开始
+            시작
           </button>
         </>
       );
@@ -208,16 +208,16 @@ function Welcome() {
       {/* 欢迎页内容 */}
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-4">
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 text-center">
-          欢迎来到觅友
+        미유에 오신 것을 환영합니다
         </h1>
         <p className="text-xl text-white text-center max-w-2xl mb-8">
-          这不是一次交易,这是建立彼此真诚友善的秘密交流
+        이번은 거래가 아닙니다. 서로 진심과 친절로 비밀스러운 소통을 쌓는 시간이 될 것입니다
         </p>
         <button
           onClick={openModal}
           className="bg-white/90 backdrop-blur-sm text-gray-900 py-3 px-8 rounded-lg font-semibold hover:bg-white transition-colors"
         >
-          开始匹配
+          매칭 시작
         </button>
       </div>
 
