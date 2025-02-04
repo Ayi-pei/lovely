@@ -5,11 +5,14 @@ import ProductDetail from './components/ProductDetail';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Welcome />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/product/:id" element={<ProductDetail />} />
-    </Routes>
+    <div>
+      <h1>Learn React</h1>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+      </Routes>
+    </div>
   );
 }
 
