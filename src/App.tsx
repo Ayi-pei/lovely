@@ -7,7 +7,7 @@ import { LINE_ID } from './constants.ts';  // 导入 LINE_ID
 function App() {
   return (
     <div>
-      <h1>Learn React</h1>
+      <h1>등록을 완료했습니다</h1>
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/products" element={<Products />} />
