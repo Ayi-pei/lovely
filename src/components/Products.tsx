@@ -1,18 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Dialog } from '@headlessui/react';
 
 // 导入产品图片
-import product1 from '../assets/product1.jpg';
-import product2 from '../assets/product2.jpg';
-import product3 from '../assets/product3.jpg';
-import product4 from '../assets/product4.jpg';
-import product5 from '../assets/product5.jpg';
-import product6 from '../assets/product6.jpg';
-import product7 from '../assets/product7.jpg';
-import product8 from '../assets/product8.jpg';
-import product9 from '../assets/product9.jpg';
+import product1 from '../assets/product1_1.jpg';
+import product2 from '../assets/product2_1.jpg';
+import product3 from '../assets/product3_1.jpg';
+import product4 from '../assets/product4_1.jpg';
+import product5 from '../assets/product5_1.jpg';
+import product6 from '../assets/product6_1.jpg';
+import product7 from '../assets/product7_1.jpg';
+import product8 from '../assets/product8_1.jpg';
+import product9 from '../assets/product9_1.jpg';
+import product10 from '../assets/product10_1.jpg';
+import product11 from '../assets/product11_1.jpg';
+import product12 from '../assets/product12_1.jpg';
+import product13 from '../assets/product13_1.jpg';
+import product14 from '../assets/product14_1.jpg';
+import product15 from '../assets/product15_1.jpg';
+import product16 from '../assets/product16_1.jpg';
+import product17 from '../assets/product17_1.jpg';
+import product18 from '../assets/product18_1.jpg';
 
 const products = [
   { id: 1, image: product1, title: '소연', description: '저는 미지의 세계를 탐험하는 것을 좋아해요 만나는 모든 순간이 인연이라고 믿어요 기대가 되네요...' },
@@ -24,6 +32,15 @@ const products = [
   { id: 7, image: product7, title: '지연', description: '지혜는 인생에서 가장 귀중한 재산이라고 믿고 친구는 우리 여행에서 최고의 동반자예요 서로의 경험을 공유하고, 지지하며 함께 미래의 도전을 맞이할 수 있기를 희망해요' },
   { id: 8, image: product8, title: '서린', description: '마음이 고운 내면이 부드러운 친구들을 만나길 기대해요 함께하는 매 순간을 즐길 수 있었으면 좋겠어요' },
   { id: 9, image: product9, title: '민지', description: '저에게는 이것이 매우 소중한 일이라고 생각해요 여러분과 깊은 소통을 하며 함께 성장할 수 있기를 기대합니다' },
+  { id: 10, image: product10, title: '수진', description: '새로운 만남을 기대하며 따뜻한 인연을 찾고 있어요' },
+  { id: 11, image: product11, title: '나연', description: '긍정적인 에너지를 나누고 싶어요' },
+  { id: 12, image: product12, title: '하린', description: '여행과 음악을 좋아하는 사람과 대화 나누고 싶어요' },
+  { id: 13, image: product13, title: '예린', description: '꿈과 목표를 향해 함께 걸어갈 친구를 찾고 있어요' },
+  { id: 14, image: product14, title: '지원', description: '진솔한 대화를 통해 서로를 알아가고 싶어요' },
+  { id: 15, image: product15, title: '다현', description: '같이 맛있는 음식을 먹고 여행을 다니며 행복을 찾고 싶어요' },
+  { id: 16, image: product16, title: '채원', description: '새로운 도전을 좋아하는 나와 함께 모험을 떠날 친구를 만나고 싶어요' },
+  { id: 17, image: product17, title: '은서', description: '서로를 이해하고 배려할 수 있는 친구를 찾고 있어요' },
+  { id: 18, image: product18, title: '윤서', description: '마음이 맞는 사람과 깊은 이야기를 나누고 싶어요' },
 ];
 
 const ITEMS_PER_PAGE = 9;
@@ -31,7 +48,6 @@ const ITEMS_PER_PAGE = 9;
 function Products() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
-  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
 
   const currentProducts = products.slice(
@@ -50,15 +66,7 @@ function Products() {
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-900 text-center mb-2">
-          온라인 매칭
-        </h2>
-        <p
-          className="text-sm text-gray-500 text-center cursor-pointer hover:underline"
-          onClick={() => setIsDisclaimerOpen(true)}
-        >
-          면책 조항
-        </p>
+        <h2 className="text-3xl font-bold text-gray-900 text-center mb-2">온라인 매칭</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {currentProducts.map((product) => (
@@ -90,40 +98,6 @@ function Products() {
           </div>
         )}
       </div>
-
-      {/* 면책 조항 다이얼로그 */}
-      <Dialog open={isDisclaimerOpen} onClose={() => setIsDisclaimerOpen(false)} className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-          <Dialog.Title className="text-lg font-semibold">면책 조항</Dialog.Title>
-          <div className="mt-2 text-sm text-gray-700 space-y-2">
-            <p>제1조: 약관 수락</p>
-            <p>
-              본 웹사이트를 방문하고 사용하기 전에 반드시 본 조항을 주의 깊게 읽고 동의해 주시기 바랍니다.
-              방문자가 웹사이트의 어떤 콘텐츠나 서비스를 이용함으로써 본 조항의 모든 내용을 무조건 수락하는 것으로 간주됩니다.
-              이의가 있으신 경우, 즉시 웹사이트 방문을 중단하고 저희와 연락해 협의해 주시기 바랍니다.
-            </p>
-            <p>제2조: 방문자 의무</p>
-            <p>
-              방문자는 본 웹사이트를 이용할 때(방문, 열람, 이용, 전재, 홍보 등을 포함하되 이에 국한되지 않음),
-              선의의 원칙을 준수하여야 하며, 고의 또는 과실로 본 웹사이트의 합법적인 권리와 이익을 해치는 행위를 하여서는 안 됩니다.
-              또한, 현지 법률 또는 사회 윤리에 위배되는 행위에 웹사이트를 이용하여서는 안 됩니다.
-            </p>
-            <p>제3조: 콘텐츠 출처 및 저작권 고지</p>
-            <p>
-              본 웹사이트의 모든 콘텐츠는 사용자가 직접 업로드하거나 인터넷에서 수집된 것으로, 본 웹사이트는 그 진실성이나 합법성에 대해 책임지지 않습니다.
-              콘텐츠가 귀하의 권리 또는 개인정보를 침해하는 경우, 저희에게 연락하여 처리해 주시기 바랍니다.
-            </p>
-            <p>제4조: 견해 고지</p>
-            <p>
-              본 웹사이트에 게시된 콘텐츠는 오로지 작성자의 개인 의견을 나타내며, 본 웹사이트의 입장이나 견해를 대변하지 않습니다.
-              관련 책임은 작성자가 부담합니다.
-            </p>
-          </div>
-          <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onClick={() => setIsDisclaimerOpen(false)}>
-            닫기
-          </button>
-        </Dialog.Panel>
-      </Dialog>
     </div>
   );
 }
